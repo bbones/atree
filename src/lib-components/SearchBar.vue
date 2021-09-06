@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label ref="si" for="search-input">Search: </label>
+        <label ref="si" for="search-input">{{ prompt }}</label>
         <div class="dropdown">
             <input id="search-input" name="search-input" v-model="searchStr"
                    @input="onInputSearch"
@@ -21,6 +21,10 @@
 export default {
     name: "SearchBar",
     props: {
+        prompt: {
+            type: String,
+            default: "Search: "
+        },
         searcher: Function
     },
     data() {
@@ -31,9 +35,7 @@ export default {
     },
     methods: {
         async onInputSearch(event) {
-            console.log(event.data);
             this.options = await this.searcher(this.searchStr);
-            console.log(this.options)
         },
 
         onSelect(item) {
@@ -42,7 +44,6 @@ export default {
         },
 
         onChangeSearch() {
-            console.log("Input change")
             let data = this.options.findIndex(opt => {
                 return opt.name === this.searchStr
             })

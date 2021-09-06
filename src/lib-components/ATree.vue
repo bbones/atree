@@ -50,7 +50,6 @@ export default {
     },
     methods: {
         async onCaretClick(item, index, event) {
-            console.log("Caret click ", {item, index})
             event.target.classList.toggle("caret-down");
             this.nodes[index].isLoaded = true;
             this.nodes[index].isVisible = !this.nodes[index].isVisible;
@@ -73,14 +72,12 @@ export default {
         }
     },
     async created () {
-        console.log("Created Atree")
         this.nodes = await this.loader(this.start_with_id);
         await this.$nextTick()
         if (this.highlight) {
             this.highlight.forEach(id => {
                 const nl = this.$refs[`caret_${id}`];
                 if (nl) {
-                    console.log(id)
                     nl[0].click();
                 }
             })
@@ -90,13 +87,10 @@ export default {
 
     watch: {
         highlight: async function(val) {
-            console.log("Watch")
             if (val && !this.isLoaded) {
                 val.forEach(id => {
                     const nl = this.$refs[`caret_${id}`];
                     if (nl) {
-                        console.log(id)
-                        console.log(nl[0].classList)
                         if (! nl[0].classList[1])
                             nl[0].click();
                     }

@@ -1,6 +1,6 @@
 {
   "name": "@bbones1967/atree",
-  "version": "0.1.12",
+  "version": "0.1.14",
   "author": "Valentyn Pogrebinsky",
   "license": "MIT",
   "keywords": [
@@ -10,25 +10,20 @@
     "asynchronous",
     "component"
   ],
-
   "repository": {
     "type": "git",
     "url": "https://github.com/bbones/atree.git"
   },
-
   "description": "Components for incremental search in tree-like structured REST services",
-
   "main": "dist/atree.ssr.js",
   "browser": "dist/atree.esm.js",
   "module": "dist/atree.esm.js",
   "unpkg": "dist/atree.min.js",
-
   "files": [
     "dist/*",
     "src/**/*.vue"
   ],
   "sideEffects": false,
-
   "scripts": {
     "serve": "vue-cli-service serve dev/serve.js",
     "prebuild": "rimraf ./dist",
@@ -37,10 +32,7 @@
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
-
-  "dependencies": {
-  },
-
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
